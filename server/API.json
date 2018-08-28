@@ -1,0 +1,126 @@
+{
+	"api": {
+		"key": "RGAPI-ba100fc2-dbc5-4994-99fe-f65067c07bbf",
+		"1": 1,
+		"10": 10,
+		"600": 500
+	},
+	"meta": {
+		"season": ["SEASON3", "SEASON2014", "SEASON2015", "SEASON2016"],
+		"region": ["br", "eune", "euw", "jp", "kr", "lan", "las", "na", "oce", "ru", "tr"],
+		"platform": {"br": "BR1", "eune": "EUN1", "euw": "EUW1", "jp": "JP1", "kr": "KR", "lan": "LA1", "las": "LA2", "na": "NA1", "oce": "OC1", "ru": "RU", "tr": "TR1"},
+		"regex": {
+			"id": "/^([A-Za-z0-9% ]+(?:[,][A-Za-z0-9% ]+){0,})$/"
+		}
+	},
+	"template_validation": {
+		"{api_key}": "api.key",
+		"{region}": "meta.region",
+		"{platform}": "meta.platform",
+		"{season}": "meta.season",
+		"{id}": "meta.regex.id",
+		"{version}": "requests.current.version"
+	},
+	"requests": {
+		"championmastery": {
+			"descr": "Get all champion mastery entries sorted by number of champion points descending.",
+			"url": "https://{region}.api.pvp.net/championmastery/location/{platform}/player/{id}/champions?api_key={api_key}",
+			"cache": 1800,
+			"max_at_once": 1
+		},
+		"currentgame": {
+			"descr": "Get current game information for the given summoner ID.",
+			"url": "https://{region}.api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/{platform}/{id}?api_key={api_key}",
+			"cache": 180,
+			"max_at_once": 1
+		},
+		"featuredgames": {
+			"descr": "Get list of featured games.",
+			"url": "https://{region}.api.pvp.net/observer-mode/rest/featured?api_key={api_key}",
+			"version": 0,
+			"cache": 1800
+		},
+		"game": {
+			"descr": "Get recent games by summoner ID. (max 10 games)",
+			"url": "https://{region}.api.pvp.net/api/lol/{region}/v{version}/game/by-summoner/{id}/recent?api_key={api_key}",
+			"version": "1.3",
+			"cache": 1800,
+			"max_at_once": 1
+		},
+		"league": {
+			"descr": "Get leagues mapped by summoner ID for a given list of summoner IDs.",
+			"url": "https://{region}.api.pvp.net/api/lol/{region}/v{version}/league/by-summoner/{id}?api_key={api_key}",
+			"version": "2.5",
+			"cache": 1800,
+			"max_at_once": 10
+		},
+		"lolstatus": {
+			"descr": "Get shard list.",
+			"url": "http://status.leagueoflegends.com/shards",
+			"cache": 180
+		},
+		"match": {
+			"descr": "Retrieve match by match ID.",
+			"url": "https://{region}.api.pvp.net/api/lol/{region}/v{version}/match/{id}?api_key={api_key}",
+			"version": "2.2",
+			"cache": 31556926,
+			"max_at_once": 1
+		},
+		"matchlist": {
+			"descr": "Retrieve match list by summoner ID.",
+			"url": "https://{region}.api.pvp.net/api/lol/{region}/v{version}/matchlist/by-summoner/{id}?api_key={api_key}",
+			"version": "2.2",
+			"cache": 1800,
+			"max_at_once": 1
+		},
+		"stats-ranked": {
+			"descr": "Get ranked stats by summoner ID.",
+			"url": "https://{region}.api.pvp.net/api/lol/{region}/v{version}/stats/by-summoner/{id}/ranked?season={season}&api_key={api_key}",
+			"version": "1.3",
+			"cache": 1800,
+			"max_at_once": 1
+		},
+		"stats-summary": {
+			"descr": "Get player stats summaries by summoner ID.",
+			"url": "https://{region}.api.pvp.net/api/lol/{region}/v{version}/stats/by-summoner/{id}/summary?season={season}&api_key={api_key}",
+			"version": "1.3",
+			"cache": 3600,
+			"max_at_once": 1
+		},
+		"summonerbyid": {
+			"descr": "Get summoner objects mapped by summoner ID for a given list of summoner IDs.",
+			"url": "https://{region}.api.pvp.net/api/lol/{region}/v{version}/summoner/{id}?api_key={api_key}",
+			"version": "1.4",
+			"cache": 3600,
+			"max_at_once": 40
+		},
+		"summonerbyname": {
+			"descr": "Get summoner objects mapped by standardized summoner name for a given list of summoner names.",
+			"url": "https://{region}.api.pvp.net/api/lol/{region}/v{version}/summoner/by-name/{id}?api_key={api_key}",
+			"version": "1.4",
+			"cache": 3600,
+			"max_at_once": 40
+		},
+		"summoner-runes": {
+			"descr": "Get rune pages mapped by summoner ID for a given list of summoner IDs.",
+			"url": "https://{region}.api.pvp.net/api/lol/{region}/v{version}/summoner/{id}/runes?api_key={api_key}",
+			"version": "1.4",
+			"cache": 3600,
+			"max_at_once": 40
+		},
+		"summoner-masteries": {
+			"descr": "Get mastery pages mapped by summoner ID for a given list of summoner IDs.",
+			"url": "https://{region}.api.pvp.net/api/lol/{region}/v{version}/summoner/{id}/masteries?api_key={api_key}",
+			"version": "1.4",
+			"cache": 3600,
+			"max_at_once": 40
+		},
+		"team": {
+			"descr": "Get teams mapped by summoner ID for a given list of summoner IDs.",
+			"url": "https://{region}.api.pvp.net/api/lol/{region}/v{version}/team/by-summoner/{id}?api_key={api_key}",
+			"version": "2.4",
+			"cache": 1800,
+			"max_at_once": 10
+		}
+	}
+}
